@@ -1,0 +1,25 @@
+{
+  "name": "back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node --env-file=.env ./src/server.js",
+    "dev": "node --watch --env-file=.env ./src/server.js",
+    "prisma": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
+  },
+  "keywords": [],
+  "author": "PEDRO MALVADÃO",
+  "license": "ISC",
+  "devDependencies": {
+    "prisma": "^5.17.0"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.17.0",
+    "axios": "^1.7.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  }
+}
