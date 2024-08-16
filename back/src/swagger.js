@@ -25,6 +25,33 @@ const doc = {
     schemes: ["http"],
     consumes: ["application/json"],
     produces: ["application/json"],
+    components: {
+        schemas: {
+            User: {
+                properties: {
+                    id: { type: "integer" },
+                    name: { type: "string" },
+                    email: { type: "string" },
+                    login: { type: "string" },
+                    password: { type: "string" },
+                    role: { type: "string" }
+                }
+            },
+            Beneficio: {
+                properties: {
+                    id: { type: "integer" },
+                    nome: { type: "string" },
+                    descricao: { type: "string" },
+                    valor: { type: "number" },
+                    id_comprador: { type: "integer" },
+                    prazo_de_pagamento: { type: "string" },
+                    situação: { type: "string" },
+                    tipo_de_baixa: { type: "string" },
+                    obs: { type: "string" }
+                }
+            }
+        },
+    }
 }
 
 const outputFile = "./src/swagger.json"
