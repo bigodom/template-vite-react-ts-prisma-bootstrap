@@ -12,6 +12,8 @@ export const getAllUsers = async (req, res) => {
 export const createUser = async (req, res) => {
     const { name, email, login, password, role } = req.body;
 
+    console.log(req.body);
+
     // Verificação de senha
     if (password.length < 6) {
         return res.status(400).json({ error: 'A senha precisa ter pelo menos 6 dígitos' });

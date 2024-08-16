@@ -3,11 +3,11 @@ import { getAllUsers, createUser, getUserById, updateUser, deleteUser } from '..
 
 const userRouter = express.Router();
 
-userRouter.route('/')
+userRouter.route('/user')
   .get(getAllUsers)
   .post(createUser);
 
-userRouter.route('/:id')
+userRouter.route('/user/:id')
   .get(getUserById)
   .put(updateUser)
   .delete(deleteUser);

@@ -20,4 +20,30 @@ model User {
   login    String @unique
   password String
   role     String
+
+  @@map("users")
+}
+
+model Beneficio {
+  id                 Int      @id @default(autoincrement())
+  valor              Float
+  id_comprador       Int
+  prazo_de_pagamento DateTime
+  situacao           String
+  data_de_cadastro   DateTime @default(now())
+  tipo_de_baixa      String
+  nome               String
+  obs                String?
+
+  Comprador Comprador @relation(fields: [id_comprador], references: [id])
+
+  @@map("beneficios")
+}
+
+model Comprador {
+  id         Int         @id
+  nome       String
+  beneficios Beneficio[]
+
+  @@map("compradores")
 }
