@@ -1,94 +1,33 @@
 {
   "openapi": "3.1.0",
   "info": {
-      "title": "API",
-      "version": "1.0.0",
-      "description": "API documentation"
+    "title": "API",
+    "version": "1.0.0",
+    "description": "API documentation"
   },
   "servers": [
     {
       "url": "http://192.168.11.95:3010",
-      "description":"Development server"
+      "description": "Development server"
     }
   ],
-  "components": {
-    "schemas": {
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "int",
-            "example": "any"
-          },
-          "name": {
-            "type": "string",
-            "example": "any"
-          },
-          "email": {
-            "type": "string",
-            "example": "any"
-          },
-          "login": {
-            "type": "string",
-            "example": "any"
-          },
-          "password": {
-            "type": "string",
-            "example": "any"
-          },
-          "role": {
-            "type": "string",
-            "example": "any"
-          }
-        }
-      },
-      "Beneficio": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "int",
-            "example": "any"
-          },
-          "nome": {
-            "type": "string",
-            "example": "any"
-          },
-          "descricao": {
-            "type": "string",
-            "example": "any"
-          },
-          "valor": {
-            "type": "string",
-            "example": "any"
-          },
-          "id_comprador": {
-            "type": "string",
-            "example": "any"
-          },
-          "prazo_de_pagamento": {
-            "type": "string",
-            "example": "any"
-          },
-          "situação": {
-            "type": "string",
-            "example": "any"
-          },
-          "tipo_de_baixa": {
-            "type": "string",
-            "example": "any"
-          },
-          "obs": {
-            "type": "string",
-            "example": "any"
-          }
-        }
-      }
+  "tags": [
+    {
+      "name": "User",
+      "description": "User endpoints"
+    },
+    {
+      "name": "Beneficio",
+      "description": "Beneficio endpoints"
     }
-  },
+  ],
   "paths": {
     "/user": {
       "get": {
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to get all users.",
         "responses": {
           "200": {
             "description": "OK"
@@ -97,36 +36,12 @@
             "description": "Internal Server Error"
           }
         }
-
       },
       "post": {
-        "sumary": "Create a new user",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "login": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "role": {
-                  "example": "any"
-                }
-              }
-              }
-            }
-          }
-        },
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to create user.",
         "responses": {
           "201": {
             "description": "Created"
@@ -137,18 +52,49 @@
           "500": {
             "description": "Internal Server Error"
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "any"
+                  },
+                  "email": {
+                    "example": "any"
+                  },
+                  "login": {
+                    "example": "any"
+                  },
+                  "password": {
+                    "example": "any"
+                  },
+                  "role": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
     "/user/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to get user by id.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -164,36 +110,17 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to update user.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "example": "any"
-                },
-                "email": {
-                  "example": "any"
-                },
-                "login": {
-                  "example": "any"
-                },
-                "password": {
-                  "example": "any"
-                },
-                "role": {
-                  "example": "any"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -207,16 +134,47 @@
           "500": {
             "description": "Internal Server Error"
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "any"
+                  },
+                  "email": {
+                    "example": "any"
+                  },
+                  "login": {
+                    "example": "any"
+                  },
+                  "password": {
+                    "example": "any"
+                  },
+                  "role": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "User"
+        ],
+        "description": "Endpoint to delete user.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -231,7 +189,10 @@
     },
     "/beneficio/": {
       "get": {
-        "description": "",
+        "tags": [
+          "Beneficio"
+        ],
+        "description": "Endpoint to get all beneficios.",
         "responses": {
           "200": {
             "description": "OK"
@@ -242,42 +203,10 @@
         }
       },
       "post": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "body",
-            "in": "body",
-            "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                },
-                "valor": {
-                  "example": "any"
-                },
-                "id_comprador": {
-                  "example": "any"
-                },
-                "prazo_de_pagamento": {
-                  "example": "any"
-                },
-                "situação": {
-                  "example": "any"
-                },
-                "tipo_de_baixa": {
-                  "example": "any"
-                },
-                "obs": {
-                  "example": "any"
-                }
-              }
-            }
-          }
+        "tags": [
+          "Beneficio"
         ],
+        "description": "Endpoint to create beneficios.",
         "responses": {
           "201": {
             "description": "Created"
@@ -285,18 +214,58 @@
           "500": {
             "description": "Internal Server Error"
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "example": "any"
+                  },
+                  "descricao": {
+                    "example": "any"
+                  },
+                  "valor": {
+                    "example": "any"
+                  },
+                  "id_comprador": {
+                    "example": "any"
+                  },
+                  "prazo_de_pagamento": {
+                    "example": "any"
+                  },
+                  "situação": {
+                    "example": "any"
+                  },
+                  "tipo_de_baixa": {
+                    "example": "any"
+                  },
+                  "obs": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
     "/beneficio/{id}": {
       "get": {
-        "description": "",
+        "tags": [
+          "Beneficio"
+        ],
+        "description": "Endpoint to get beneficio by id.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -312,45 +281,17 @@
         }
       },
       "put": {
-        "description": "",
+        "tags": [
+          "Beneficio"
+        ],
+        "description": "Endpoint to update beneficio.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
-          },
-          {
-            "name": "body",
-            "in": "body",
             "schema": {
-              "type": "object",
-              "properties": {
-                "nome": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                },
-                "valor": {
-                  "example": "any"
-                },
-                "id_comprador": {
-                  "example": "any"
-                },
-                "prazo_de_pagamento": {
-                  "example": "any"
-                },
-                "situação": {
-                  "example": "any"
-                },
-                "tipo_de_baixa": {
-                  "example": "any"
-                },
-                "obs": {
-                  "example": "any"
-                }
-              }
+              "type": "string"
             }
           }
         ],
@@ -361,16 +302,56 @@
           "500": {
             "description": "Internal Server Error"
           }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "nome": {
+                    "example": "any"
+                  },
+                  "descricao": {
+                    "example": "any"
+                  },
+                  "valor": {
+                    "example": "any"
+                  },
+                  "id_comprador": {
+                    "example": "any"
+                  },
+                  "prazo_de_pagamento": {
+                    "example": "any"
+                  },
+                  "situação": {
+                    "example": "any"
+                  },
+                  "tipo_de_baixa": {
+                    "example": "any"
+                  },
+                  "obs": {
+                    "example": "any"
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Beneficio"
+        ],
+        "description": "Endpoint to delete beneficio by id.",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {

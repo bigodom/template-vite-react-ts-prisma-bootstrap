@@ -1,6 +1,8 @@
 import prisma from "../services/databaseClient.js";
 
 export const getAllBeneficios = async (req, res) => {
+    /*  #swagger.tags = ['Beneficio']
+    #swagger.description = 'Endpoint to get all beneficios.' */
     try {
         const beneficios = await prisma.beneficio.findMany();
         res.json(beneficios);
@@ -10,6 +12,8 @@ export const getAllBeneficios = async (req, res) => {
 }
 
 export const createBeneficio = async (req, res) => {
+    /*  #swagger.tags = ['Beneficio']
+    #swagger.description = 'Endpoint to create beneficios.' */
     const { nome, descricao, valor, id_comprador, prazo_de_pagamento, situação, tipo_de_baixa, obs } = req.body;
 
     try {
@@ -24,6 +28,8 @@ export const createBeneficio = async (req, res) => {
 }
 
 export const getBeneficioById = async (req, res) => {
+    /*  #swagger.tags = ['Beneficio']
+    #swagger.description = 'Endpoint to get beneficio by id.' */
     const { id } = req.params;
     try {
         const beneficio = await prisma.beneficio.findUnique({
@@ -40,6 +46,8 @@ export const getBeneficioById = async (req, res) => {
 }
 
 export const updateBeneficio = async (req, res) => {
+    /*  #swagger.tags = ['Beneficio']
+    #swagger.description = 'Endpoint to update beneficio.' */
     const { id } = req.params;
     const { nome, descricao, valor, id_comprador, prazo_de_pagamento, situação, tipo_de_baixa, obs } = req.body;
 
@@ -56,6 +64,8 @@ export const updateBeneficio = async (req, res) => {
 }
 
 export const deleteBeneficio = async (req, res) => {
+    /*  #swagger.tags = ['Beneficio']
+    #swagger.description = 'Endpoint to delete beneficio by id.' */
     const { id } = req.params;
     try {
         await prisma.beneficio.delete({

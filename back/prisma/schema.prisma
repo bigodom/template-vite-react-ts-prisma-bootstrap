@@ -28,7 +28,7 @@ model Beneficio {
   id                 Int      @id @default(autoincrement())
   valor              Float
   id_comprador       Int
-  prazo_de_pagamento DateTime
+  prazo_de_pagamento DateTime @db.Date
   situacao           String
   data_de_cadastro   DateTime @default(now())
   tipo_de_baixa      String

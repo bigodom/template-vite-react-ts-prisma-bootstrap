@@ -1,6 +1,8 @@
 import prisma from "../services/databaseClient.js";
 
 export const getAllUsers = async (req, res) => {
+    /*  #swagger.tags = ['User']
+    #swagger.description = 'Endpoint to get all users.' */
     try {
         const users = await prisma.user.findMany();
         res.json(users);
@@ -10,6 +12,8 @@ export const getAllUsers = async (req, res) => {
 };
 
 export const createUser = async (req, res) => {
+    /*  #swagger.tags = ['User']
+    #swagger.description = 'Endpoint to create user.' */
     const { name, email, login, password, role } = req.body;
 
     console.log(req.body);
@@ -50,6 +54,8 @@ export const createUser = async (req, res) => {
 };
 
 export const getUserById = async (req, res) => {
+    /*  #swagger.tags = ['User']
+    #swagger.description = 'Endpoint to get user by id.' */
     const { id } = req.params;
     try {
         const user = await prisma.user.findUnique({
@@ -66,6 +72,8 @@ export const getUserById = async (req, res) => {
 };
 
 export const updateUser = async (req, res) => {
+    /*  #swagger.tags = ['User']
+    #swagger.description = 'Endpoint to update user.' */
     const { id } = req.params;
     const { name, email, login, password, role } = req.body;
 
@@ -106,6 +114,8 @@ export const updateUser = async (req, res) => {
 };
 
 export const deleteUser = async (req, res) => {
+    /*  #swagger.tags = ['User']
+    #swagger.description = 'Endpoint to delete user.' */
     const { id } = req.params;
     try {
         await prisma.user.delete({

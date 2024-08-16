@@ -1,5 +1,6 @@
 import express from 'express';
 import userRouter from './routes/userRoutes.js';
+import beneficioRouter from './routes/beneficioRoutes.js';
 import cors from 'cors';
 import swaggerUi from 'swagger-ui-express';
 import swaggerAutogen from 'swagger-autogen';
@@ -17,6 +18,7 @@ console.log(swaggerFile);
 app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(userRouter);
+app.use(beneficioRouter);
 
 app.get('/', (req, res) => {
   res.send('API is running');
